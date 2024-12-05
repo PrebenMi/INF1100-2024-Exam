@@ -1,0 +1,58 @@
+##########
+# Prompt #
+##########
+
+I need a function in C that takes in a string and removes the first and last characters from it
+
+
+##########
+# Answer #
+##########
+
+
+Here's a C function to remove the first and last characters from a string:
+
+c
+Kopier kode
+#include <stdio.h>
+#include <string.h>
+
+void trimFirstAndLast(char *str) {
+    int len = strlen(str);
+    if (len <= 2) {
+        // If the string has 2 or fewer characters, clear it
+        str[0] = '\0';
+        return;
+    }
+
+    // Shift all characters to the left, skipping the first one
+    memmove(str, str + 1, len - 1);
+
+    // Null-terminate the string two characters earlier
+    str[len - 2] = '\0';
+}
+
+int main() {
+    char str[] = "Hello, World!";
+    printf("Original: %s\n", str);
+
+    trimFirstAndLast(str);
+    printf("Trimmed: %s\n", str);
+
+    return 0;
+}
+Explanation:
+Check Length:
+
+If the string has 2 or fewer characters, it cannot have both a first and last character. The function clears the string in such cases.
+Shift Characters:
+
+The memmove function shifts the content of the string starting from the second character (skipping the first one) to the beginning of the string.
+Null-Terminate Early:
+
+After removing the first character, the string is shortened by two characters (len - 2) and null-terminated at that position.
+Example Output:
+text
+Kopier kode
+Original: Hello, World!
+Trimmed: ello, World

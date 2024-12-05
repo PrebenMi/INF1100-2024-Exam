@@ -1,0 +1,8 @@
+(a "simple" program that jumps over commands)
+~This should be popped last~ (set up ending)
+1                            (true)
+6 .cjump                    (since true, jump 6 commands) 
+~this message should not exist~ .print .newline   ( print statement should be skipped )
+--1 3ea .ERROR                                    ( 3 more, all should be skipped )
+.print .newline                   ( print forst message set up in the start, results in empty stack and correct cjump )
+
